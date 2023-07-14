@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 const errorMap: Record<string, number> = {
-  INVALID_DATA: 422,
+  INVALIDDATA: 422,
   UNAUTHORIZED: 401,
-  NOT_FOUND: 404,
+  NOTFOUND: 404,
   CONFLICT: 409,
 };
 
