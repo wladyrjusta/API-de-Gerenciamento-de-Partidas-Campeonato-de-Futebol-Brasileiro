@@ -18,7 +18,7 @@ export default class TeamService {
     const team = await this.teamModel.findById(id);
 
     if (!team) {
-      return { status: 'NOTFOUND', data: { message: `Team id ${id} not found` } };
+      return { status: 'notFound', data: { message: `Team id ${id} not found` } };
     }
 
     return { status: 'SUCCESSFUL', data: team };
