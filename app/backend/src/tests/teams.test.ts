@@ -3,9 +3,9 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
-import { app } from '../../app';
-import teamsMock from '../mocks/teams.mock';
-import SequelizeTeam from '../../database/models/SequelizeTeam';
+import { app } from '../app';
+import teamsMock from './mocks/teams.mock';
+import SequelizeTeam from '../database/models/SequelizeTeam';
 
 chai.use(chaiHttp);
 
