@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testes das rotas de teams', () => {
+describe('Testes da rota de "/teams"', () => {
   afterEach(()=>{
     sinon.restore();
   })
