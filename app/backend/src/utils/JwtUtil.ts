@@ -3,8 +3,8 @@ import * as jwt from 'jsonwebtoken';
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 type TokenPayload = {
-  role: string;
   email: string;
+  role: string;
 };
 
 interface ITokenUtil {

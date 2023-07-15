@@ -10,7 +10,6 @@ import JwtUtil from '../utils/JwtUtil';
 export default class LoginService {
   private jwt = new JwtUtil();
   private emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  private areLoginCredentialsCorrect = true;
   private invalidEmailPasswordData = { message: 'Invalid email or password' };
   private noEmailPassword = { message: 'All fields must be filled' };
 
@@ -26,7 +25,7 @@ export default class LoginService {
       return { status: 'unauthorized', data: this.invalidEmailPasswordData };
     }
     const token = await this.userEmailPasswordDBValidation(loginCredentials);
-    if (!this.areLoginCredentialsCorrect) {
+    if (!token) {
       return { status: 'unauthorized', data: this.invalidEmailPasswordData };
     }
     return { status: 'SUCCESSFUL', data: { token } };
@@ -38,13 +37,13 @@ export default class LoginService {
 
   private async userEmailPasswordDBValidation(
     loginCredentials: ILoginCredentials,
-  ): Promise<string> {
+  ): Promise<string | null> {
     const dbUser = await this.userModel.findByEmail(loginCredentials.email);
     if (
       !dbUser || !bcrypt.compareSync(loginCredentials.password, dbUser.password)
-    ) this.areLoginCredentialsCorrect = false;
-    const { role, email } = dbUser as IUser;
-    const token = this.jwt.signToken({ role, email });
+    ) return null;
+    const { email, role } = dbUser as IUser;
+    const token = this.jwt.signToken({ email, role });
     return token;
   }
 }
