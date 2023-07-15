@@ -1,5 +1,5 @@
 const errorMap: Record<string, number> = {
-  invalidData: 422,
+  invalidData: 400,
   unauthorized: 401,
   notFound: 404,
   conflict: 409,
