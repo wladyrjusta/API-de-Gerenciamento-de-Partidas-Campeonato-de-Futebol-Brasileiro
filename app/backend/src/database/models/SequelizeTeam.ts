@@ -8,7 +8,7 @@ import {
 
 import db from '.';
 
-import SequelizeMatche from './SequelizeMtache';
+import SequelizeMatche from './SequelizeMtach';
 
 class SequelizeTeam extends Model<InferAttributes<SequelizeTeam>,
 InferCreationAttributes<SequelizeTeam>> {

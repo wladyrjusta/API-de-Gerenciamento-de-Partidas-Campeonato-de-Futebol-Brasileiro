@@ -8,8 +8,8 @@ import {
 
 import db from '.';
 
-class SequelizeMatche extends Model<InferAttributes<SequelizeMatche>,
-InferCreationAttributes<SequelizeMatche>> {
+class SequelizeMatch extends Model<InferAttributes<SequelizeMatch>,
+InferCreationAttributes<SequelizeMatch>> {
   declare id: CreationOptional<number>;
 
   declare homeTeamId: number;
@@ -23,7 +23,7 @@ InferCreationAttributes<SequelizeMatche>> {
   declare inProgress: boolean;
 }
 
-SequelizeMatche.init({
+SequelizeMatch.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -34,6 +34,10 @@ SequelizeMatche.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'home_team_id',
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   homeTeamGoals: {
     type: DataTypes.INTEGER,
@@ -44,6 +48,10 @@ SequelizeMatche.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'away_team_id',
+    references: {
+      model: 'teams',
+      key: 'id',
+    },
   },
   awayTeamGoals: {
     type: DataTypes.INTEGER,
@@ -58,8 +66,8 @@ SequelizeMatche.init({
 }, {
   sequelize: db,
   underscored: true,
-  modelName: 'users',
+  modelName: 'matches',
   timestamps: false,
 });
 
-export default SequelizeMatche;
+export default SequelizeMatch;
