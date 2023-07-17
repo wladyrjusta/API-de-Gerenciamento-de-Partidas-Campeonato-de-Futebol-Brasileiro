@@ -1,4 +1,5 @@
 import { IUser } from "../../Interfaces/IUser";
+import { TokenPayload } from "../../utils/JwtUtil";
 
 const token = 'valid-token';
 
@@ -37,6 +38,17 @@ const noCredentialsLoginUser = {
   password: 'secret_admin',
 };
 
+const tokenpayload: TokenPayload = {
+  email: 'user@admin.com',
+  role: 'admin',
+};
+
+const roleResponse = { role: 'admin' };
+
+const tokenNotFound = { message: 'Token not found' };
+
+const invalidToken = { message: 'Token must be a valid token' };
+
 export default {
   token,
   invalidEmailPasswordError,
@@ -47,4 +59,8 @@ export default {
   invalidLoginUser,
   noCredentialsLoginUser,
   invalidPassword,
+  tokenpayload,
+  roleResponse,
+  tokenNotFound,
+  invalidToken,
 }

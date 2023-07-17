@@ -3,6 +3,7 @@ import LoginService from '../services/LoginService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 
 export default class LoginController {
+  private role = '';
   constructor(
     private loginService = new LoginService(),
   ) { }
@@ -16,5 +17,10 @@ export default class LoginController {
     }
 
     return res.status(200).json(serviceResponse.data);
+  }
+
+  public userLoginRole(_req: Request, res: Response) {
+    this.role = res.locals.role;
+    return res.status(200).json({ role: this.role });
   }
 }
