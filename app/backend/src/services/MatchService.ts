@@ -19,7 +19,6 @@ export default class MatchService {
 
   public async getByProgressWithTeams(q: string): Promise<ServiceResponse<SequelizeMatch[]>> {
     const query = q === 'true';
-    console.log(q);
     const allMatchesByProgressWithTeams = await this.matchModel.findByProgressWithTeams(query);
 
     return { status: 'SUCCESSFUL', data: allMatchesByProgressWithTeams };

@@ -66,6 +66,7 @@ describe('Testes da rota de "/login"', () => {
   describe('GET "/login/role"', () => {
     it('Se token deve ser enviado pelo campo Authorization e conter a seguinte estrutura: "Bearer token", deve retornar status 200 com um objeto contendo a role do user', async () => {
       // Arrange
+      const token = 'Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTYwNzkyOH0.YKHURa7pQcR4g-F0MVqnB52cb18MIo5e7hHwYf3vOwg';
       const authMiddleware = new AuthMiddleware();
       sinon.stub(authMiddleware, 'authMiddleare').callsFake(async (req, res, next) => {
         res.locals.role = 'admin'; // Simule a adição do papel em res.locals
@@ -74,7 +75,7 @@ describe('Testes da rota de "/login"', () => {
       // Act
       const { status, body } = await chai.request(app)
         .get('/login/role')
-        .set('Authorization', 'Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTYwNzkyOH0.YKHURa7pQcR4g-F0MVqnB52cb18MIo5e7hHwYf3vOwg');
+        .set('Authorization', token);
               
       // Assert
       expect(status).to.equal(200);
