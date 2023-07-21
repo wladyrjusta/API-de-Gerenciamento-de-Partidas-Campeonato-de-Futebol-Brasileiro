@@ -8,8 +8,6 @@ import {
 
 import db from '.';
 
-import SequelizeMatche from './SequelizeMtach';
-
 class SequelizeTeam extends Model<InferAttributes<SequelizeTeam>,
 InferCreationAttributes<SequelizeTeam>> {
   declare id: CreationOptional<number>;
@@ -33,19 +31,6 @@ SequelizeTeam.init({
   underscored: true,
   modelName: 'teams',
   timestamps: false,
-});
-
-SequelizeMatche.belongsTo(SequelizeTeam, {
-  foreignKey: 'home_team_id', as: 'homeTeam',
-});
-SequelizeMatche.belongsTo(SequelizeTeam, {
-  foreignKey: 'away_team_id', as: 'awayTeam',
-});
-SequelizeTeam.hasMany(SequelizeMatche, {
-  foreignKey: 'home_team_id', as: 'homeMatches',
-});
-SequelizeTeam.hasMany(SequelizeMatche, {
-  foreignKey: 'away_team_id', as: 'awayMatches',
 });
 
 export default SequelizeTeam;
