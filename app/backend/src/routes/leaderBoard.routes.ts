@@ -14,4 +14,9 @@ leaderBoardRouter.get(
   (req: Request, res: Response) => teamController.leaderBoardAway(req, res),
 );
 
+leaderBoardRouter.get(
+  '/',
+  (req: Request, res: Response) => teamController.leaderBoard(req, res),
+);
+
 export default leaderBoardRouter;

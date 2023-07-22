@@ -45,4 +45,14 @@ export default class TeamService {
 
     return { status: 'SUCCESSFUL', data: allLeaderTeamsAway as SequelizeTeamWithMatchesAway[] };
   }
+
+  public getLeaderBoardHome = async (): Promise<SequelizeTeamWithMatchesHome[]> => {
+    const homeMatches = await this.teamModel.homeLeaderBoard();
+    return homeMatches;
+  };
+
+  public getLeaderBoardAway = async (): Promise<SequelizeTeamWithMatchesAway[]> => {
+    const awayMatches = await this.teamModel.awayLeaderBoard();
+    return awayMatches;
+  };
 }

@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testes da rota de "/teams"', () => {
+describe('Testes da rota de "/matches"', () => {
   afterEach(()=>{
     sinon.restore();
   })
@@ -20,7 +20,7 @@ describe('Testes da rota de "/teams"', () => {
       // Arrange
       const allMatchesMock = sinon.stub();
       allMatchesMock.resolves(matchesMock.allMatchesTeamsReturn);
-      sinon.stub(SequelizeMatch, 'findAll').    callsFake(allMatchesMock);
+      sinon.stub(SequelizeMatch, 'findAll').callsFake(allMatchesMock);
       // Act
       const { status, body } =
       await chai.request(app).get('/matches');
