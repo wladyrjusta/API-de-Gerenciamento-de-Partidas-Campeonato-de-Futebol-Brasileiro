@@ -43,7 +43,7 @@ describe('Testes da rota de "/matches"', () => {
           return matchesMock.allMatchesTeamsReturn;
         }
       );
-      sinon.stub(SequelizeMatch, 'findAll').    callsFake(allMatchesMock);
+      sinon.stub(SequelizeMatch, 'findAll').callsFake(allMatchesMock);
       // Act
       const { status, body } =
       await chai.request(app).get('/matches?inProgress=true');      
